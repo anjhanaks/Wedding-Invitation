@@ -601,11 +601,28 @@ if(welcomeScreen){
  welcomeScreen.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();openInvitation();}});
 }
 if(musicButton){musicButton.addEventListener('click',()=>{if(musicStarted || (musicAudio && !musicAudio.paused)){stopMusic();}else{startMusic();}});}
-// Stop music when the visitor leaves the page, switches tabs, minimizes the browser, or closes it.
+// Stop music while the page is hidden, then resume automatically when the visitor returns
+// if music was playing before they left. Browser settings may still block automatic playback.
+let resumeMusicOnReturn=false;
+function pauseMusicWhenLeaving(){
+ resumeMusicOnReturn=!!(musicAudio && !musicAudio.paused && musicStarted);
+ stopMusic();
+}
+function resumeMusicWhenReturning(){
+ if(resumeMusicOnReturn && document.visibilityState!=='hidden'){
+  resumeMusicOnReturn=false;
+  startMusic();
+ }
+}
 document.addEventListener('visibilitychange',()=>{
- if(document.visibilityState==='hidden') stopMusic();
+ if(document.visibilityState==='hidden'){
+  pauseMusicWhenLeaving();
+ }else{
+  resumeMusicWhenReturning();
+ }
 });
-window.addEventListener('pagehide',stopMusic);
+window.addEventListener('pagehide',pauseMusicWhenLeaving);
+window.addEventListener('pageshow',resumeMusicWhenReturning);
 
 if(musicAudio){
  musicAudio.addEventListener('play',()=>{musicStarted=true;updateMusicButton();});
