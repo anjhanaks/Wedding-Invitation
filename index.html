@@ -282,6 +282,28 @@ nav{background:linear-gradient(100deg,rgba(39,4,17,.98),rgba(79,9,34,.96));borde
 }
 
 
+
+/* Keep all three celebration cards equal in size and remove excess Reception space */
+.events .event-grid{align-items:stretch!important}
+.events .event{
+  box-sizing:border-box!important;
+  height:246px!important;
+  min-height:246px!important;
+  padding:24px 18px 18px!important;
+}
+.events .event-icon{margin:0 0 10px!important}
+.events .event h3{margin:0 0 10px!important}
+.events .event-date,.events .event p{
+  line-height:1.22!important;
+  margin:0 0 7px!important;
+}
+.events .event .event-time-line{margin-bottom:6px!important}
+.events .event .calendar-text-link{margin: auto 0 0!important}
+@media(max-width:700px){
+  .events .event{height:auto!important;min-height:0!important;padding:24px 16px 20px!important}
+  .events .event .calendar-text-link{margin:8px 0 0!important}
+}
+
 /* Wedding monogram logo and refined responsive brand */
 nav .brand{display:flex;align-items:center;gap:12px;white-space:normal;min-width:0;line-height:1.25;letter-spacing:.015em;font-size:1.02rem;flex-shrink:0}
 .wedding-logo{width:48px;height:48px;flex:0 0 48px;overflow:visible;filter:drop-shadow(0 1px 4px #1d0610aa)}
@@ -291,7 +313,11 @@ nav .brand{display:flex;align-items:center;gap:12px;white-space:normal;min-width
 @media(max-width:560px){nav .brand{gap:9px;font-size:.96rem;max-width:100%}.wedding-logo{width:42px;height:42px;flex-basis:42px}.brand-names{max-width:calc(100vw - 95px)}}
 @media(max-width:360px){nav .brand{font-size:.84rem;gap:7px}.wedding-logo{width:36px;height:36px;flex-basis:36px}.brand-names{max-width:calc(100vw - 78px)}}
 
-/* Final logo sizing refinements */\n.hero-wedding-emblem{width:clamp(112px,16vw,172px);aspect-ratio:1.425;object-fit:cover;object-position:center;border-radius:50%;}\n.footer-wedding-logo{width:min(190px,48vw);max-height:none;}\n@media(max-width:700px){.hero-wedding-emblem{width:104px;margin-bottom:9px}.footer-wedding-logo{width:min(150px,42vw);margin-bottom:10px}}\n</style>
+/* Final logo sizing refinements */\n.hero-wedding-emblem{width:clamp(112px,16vw,172px);aspect-ratio:1.425;object-fit:cover;object-position:center;border-radius:50%;}\n.footer-wedding-logo{width:min(190px,48vw);max-height:none;}\n@media(max-width:700px){.hero-wedding-emblem{width:104px;margin-bottom:9px}.footer-wedding-logo{width:min(150px,42vw);margin-bottom:10px}}\n
+
+.live-attending{margin-top:18px;padding:14px 16px;border:1px solid #d8b66c;border-radius:10px;background:linear-gradient(135deg,#6b1730,#4e0b22);color:#fff0d7;line-height:1.7}.live-attending strong{color:#f4d18b}
+
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style id="wishes-button-and-gallery-hover-fix">
@@ -438,6 +464,7 @@ nav .brand{display:flex;align-items:center;gap:12px;white-space:normal;min-width
     <article class="event">
       <div class="event-icon">❦</div><h3>RECEPTION</h3>
       <p class="event-date">November 12, 2026</p><p class="event-time-line">7:00 PM onwards</p>
+      <p class="event-time-line">9:00 PM – Dance Floor &amp; DJ Party</p>
       <a class="calendarBtn calendar-text-link" href="#calendarModal" data-event="reception">Add to Calendar ↗</a>
     </article>
     <article class="event">
@@ -495,7 +522,7 @@ nav .brand{display:flex;align-items:center;gap:12px;white-space:normal;min-width
   <div class="section-head"><h2>Watch Our Wedding Live</h2><p>For loved ones joining us from near and far</p></div>
   <div class="live-card">
     <a class="video-frame" id="videoFrame" href="https://www.jvrlive.com/dharsan&amp;anjhana/" target="_blank" rel="noopener" aria-label="Open wedding livestream"><div class="video-placeholder"><div class="play-icon">▷</div><h3>Watch Our Wedding Live</h3><p>Tap here to open the wedding livestream.</p><span class="btn">Watch Live ↗</span></div></a>
-    <div class="live-copy"><div class="eyebrow" style="color:#e6c078">Be part of our special day</div><h3>Celebrate with us, wherever you are</h3><p>Join the celebration online through our wedding livestream link. Open the stream on the wedding day and share the moment with us from anywhere.</p></div>
+    <div class="live-copy"><div class="eyebrow" style="color:#e6c078">Be part of our special day</div><h3>Celebrate with us, wherever you are</h3><p>Join the celebration online through our wedding livestream link. Open the stream on the wedding day and share the moment with us from anywhere.</p><p class="live-attending"><strong>Attending in person?</strong> Make sure to hit the <strong>Selfie Photo Booth</strong> and <strong>360° Video Booth</strong> to lock in your favorite moments forever!</p></div>
   </div>
 </section>
 
@@ -589,7 +616,7 @@ function downloadCalendarEvent(kind){
  const ev=events[kind];if(!ev)return;
  const locationText='GPL A/C Mahal, 104, Perambur Red Hills High Road, Pachaiappan Colony, Roja Nagar, Lakshmipuram, Chennai, Tamil Nadu 600099, India';
  const escapeICS=s=>s.replace(/\\/g,'\\\\').replace(/,/g,'\\,').replace(/;/g,'\\;').replace(/\n/g,'\\n');
- const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Dharsan and Anjhana Wedding//EN','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:'+kind+'-dharsan-anjhana-2026@example.com','DTSTAMP:20261011T120000Z','DTSTART;TZID=Asia/Kolkata:'+ev.start,'DTEND;TZID=Asia/Kolkata:'+ev.end,'SUMMARY:'+escapeICS(ev.title),'LOCATION:'+escapeICS(locationText),'DESCRIPTION:We look forward to celebrating with you!','END:VEVENT','END:VCALENDAR'];
+ const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Dharsan and Anjhana Wedding//EN','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:'+kind+'-dharsan-anjhana-2026@example.com','DTSTAMP:20261011T120000Z','DTSTART;TZID=Asia/Kolkata:'+ev.start,'DTEND;TZID=Asia/Kolkata:'+ev.end,'SUMMARY:'+escapeICS(ev.title),'LOCATION:'+escapeICS(locationText),'DESCRIPTION:We look forward to celebrating with you! 9:00 PM – Dance Floor & DJ Party: We invite everyone to join the fun and dance with us!','END:VEVENT','END:VCALENDAR'];
  const blob=new Blob([lines.join('\r\n')],{type:'text/calendar;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=kind+'-dharsan-anjhana.ics';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
 }
 
@@ -612,7 +639,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')calendarModal.classL
 document.getElementById('googleCalendarBtn').addEventListener('click',()=>{
  const ev=calendarEvents[selectedCalendarEvent];if(!ev)return;
  const locationText='GPL A/C Mahal, 104, Perambur Red Hills High Road, Pachaiappan Colony, Roja Nagar, Lakshmipuram, Chennai, Tamil Nadu 600099, India';
- const params=new URLSearchParams({action:'TEMPLATE',text:ev.title,dates:ev.googleStart+'/'+ev.googleEnd,ctz:'Asia/Kolkata',details:'We look forward to celebrating with you!',location:locationText});
+ const params=new URLSearchParams({action:'TEMPLATE',text:ev.title,dates:ev.googleStart+'/'+ev.googleEnd,ctz:'Asia/Kolkata',details:selectedCalendarEvent==='reception'?'We look forward to celebrating with you!\n\n9:00 PM – Dance Floor & DJ Party: We invite everyone to join the fun and dance with us.':'We look forward to celebrating with you!',location:locationText});
  const googleUrl='https://calendar.google.com/calendar/render?'+params.toString();
  const opened=window.open(googleUrl,'_blank');
  if(!opened){const fallback=document.createElement('a');fallback.href=googleUrl;fallback.target='_blank';fallback.rel='noopener';fallback.textContent='Open Google Calendar';fallback.className='btn';document.body.appendChild(fallback);fallback.click();fallback.remove();}
@@ -1304,6 +1331,61 @@ nav .brand-names{
 #home .countdown .timebox strong { font-weight: 700 !important; }
 #home .countdown .timebox span { font-weight: 600 !important; }
 #home .btn { font-weight: 700 !important; }
+
+/* Reception card: ensure the complete DJ invitation and Add to Calendar link are visible */
+.events .event-grid .event:nth-child(2){min-height:340px!important;height:auto!important;overflow:visible!important;padding-bottom:28px!important}
+.events .event .reception-extras{width:100%;max-width:560px;margin:16px auto 14px!important;position:relative;z-index:2}
+.events .event .reception-extras p{display:block!important;white-space:normal!important;overflow:visible!important;color:#5b2633!important;background:linear-gradient(135deg,#fff6e2,#f6e5c4)!important;border:1px solid #d8b66c!important;border-radius:10px!important;padding:14px 15px!important;line-height:1.6!important;font-size:.96rem!important;text-align:center!important;margin:0!important}
+.events .event .reception-extras strong{color:#68142f!important}
+.events .event:nth-child(2) .calendar-text-link{margin-top:8px!important;position:relative;z-index:3}
+@media(max-width:700px){.events .event-grid .event:nth-child(2){min-height:0!important;padding-bottom:24px!important}.events .event .reception-extras p{font-size:.94rem!important;padding:13px 12px!important}}
 </style>
+
+<style id="wedding-event-cards-equal-height-final">
+/* Final fix: all three Wedding Celebrations cards share one fixed height.
+   Remove the old Reception-only expansion that created the blank area. */
+.events .event-grid {
+  align-items: stretch !important;
+}
+.events .event-grid > .event,
+.events .event-grid > .event:nth-child(2) {
+  box-sizing: border-box !important;
+  height: 246px !important;
+  min-height: 246px !important;
+  max-height: 246px !important;
+  overflow: hidden !important;
+  padding: 24px 15px 18px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+.events .event-grid > .event .event-icon {
+  margin: 0 0 10px !important;
+  line-height: 1.2 !important;
+}
+.events .event-grid > .event h3 {
+  margin: 0 0 10px !important;
+  line-height: 1.2 !important;
+}
+.events .event-grid > .event .event-date,
+.events .event-grid > .event .event-time-line {
+  margin: 0 0 7px !important;
+  line-height: 1.25 !important;
+}
+.events .event-grid > .event .calendar-text-link {
+  margin: auto 0 0 !important;
+  flex: 0 0 auto !important;
+}
+@media (max-width: 760px) {
+  .events .event-grid > .event,
+  .events .event-grid > .event:nth-child(2) {
+    height: 246px !important;
+    min-height: 246px !important;
+    max-height: 246px !important;
+  }
+}
+</style>
+
 </body>
 </html>
