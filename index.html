@@ -293,6 +293,105 @@ nav .brand{display:flex;align-items:center;gap:12px;white-space:normal;min-width
 
 /* Final logo sizing refinements */\n.hero-wedding-emblem{width:clamp(112px,16vw,172px);aspect-ratio:1.425;object-fit:cover;object-position:center;border-radius:50%;}\n.footer-wedding-logo{width:min(190px,48vw);max-height:none;}\n@media(max-width:700px){.hero-wedding-emblem{width:104px;margin-bottom:9px}.footer-wedding-logo{width:min(150px,42vw);margin-bottom:10px}}\n</style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style id="wishes-button-and-gallery-hover-fix">
+/* Match both action buttons to the main Wedding Invitation button. */
+#wishesForm .btn.light,
+#shareBtn.btn.light{
+  background:var(--wine,#3b071b)!important;
+  color:#fff0d5!important;
+  border:1px solid var(--gold,#d8b66c)!important;
+  box-shadow:0 3px 10px rgba(59,7,27,.12)!important;
+}
+#wishesForm .btn.light:hover,
+#shareBtn.btn.light:hover{
+  background:var(--wine2,#68142f)!important;
+  color:#fff5df!important;
+  transform:translateY(-2px);
+  box-shadow:0 7px 18px rgba(59,7,27,.2)!important;
+}
+# Gallery photos intentionally have no visible captions or labels.
+#gallery .gallery-slide figcaption{display:none!important;}
+</style>
+
+
+<style id="gallery-hover-and-matching-cta-final-fix">
+/* Keep the gallery photos uncropped, but make the hover zoom reliably visible. */
+#gallery .gallery-shell { overflow: hidden !important; }
+#gallery .gallery-slide { position: relative !important; overflow: hidden !important; isolation: isolate; }
+#gallery .gallery-slide img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  transform: scale(1) !important;
+  transform-origin: center center !important;
+  transition: transform 450ms cubic-bezier(.2,.7,.2,1) !important;
+  will-change: transform;
+}
+#gallery .gallery-slide:hover img,
+#gallery .gallery-slide:focus-within img { transform: scale(1.09) !important; }
+
+/* Use the exact gold-gradient treatment of the main Wedding Invitation button. */
+#shareBtn.btn,
+#wishesForm .btn,
+.story-copy > .btn[href="#gallery"] {
+  background: linear-gradient(135deg,#e8cb87,#b88a42) !important;
+  color: #351020 !important;
+  border: 1px solid #f4dfa5 !important;
+  box-shadow: 0 8px 22px #18020c45 !important;
+  font-weight: 600 !important;
+}
+#shareBtn.btn:hover,
+#wishesForm .btn:hover,
+.story-copy > .btn[href="#gallery"]:hover {
+  background: linear-gradient(135deg,#f4dfa5,#c59a50) !important;
+  color: #351020 !important;
+  transform: translateY(-2px);
+}
+</style>
+
+
+<style id="final-gallery-hover-and-button-color-fix-v2">
+/* Each gallery image responds only when the pointer is directly over that image. */
+#gallery .gallery-shell { overflow: hidden !important; }
+#gallery .gallery-track { overflow-x: auto !important; overflow-y: hidden !important; }
+#gallery .gallery-slide { position: relative !important; overflow: hidden !important; }
+#gallery .gallery-slide img {
+  display: block !important;
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: cover !important;
+  transform: none !important;
+  transition: transform 450ms cubic-bezier(.2,.7,.2,1) !important;
+  will-change: transform;
+}
+#gallery .gallery-slide:hover img,
+#gallery .gallery-slide:focus-within img { transform: none !important; }
+#gallery .gallery-slide img:hover { transform: scale(1.09) !important; }
+#gallery .gallery-slide figcaption { display: none !important; }
+@media (max-width:700px) { #gallery .gallery-slide img { height:270px !important; } }
+@media (max-width:560px) { #gallery .gallery-slide img { height:260px !important; } }
+
+/* Match the gold-gradient Wedding Invitation CTA, including its hover state. */
+#shareBtn.btn,
+#wishesForm button[type="submit"],
+#story .story-copy a.btn[href="#gallery"] {
+  background: linear-gradient(135deg,#e8cb87,#b88a42) !important;
+  color: #351020 !important;
+  border: 1px solid #f4dfa5 !important;
+  box-shadow: 0 8px 22px #18020c45 !important;
+  font-weight: 600 !important;
+}
+#shareBtn.btn:hover,
+#wishesForm button[type="submit"]:hover,
+#story .story-copy a.btn[href="#gallery"]:hover {
+  background: linear-gradient(135deg,#f4dfa5,#c59a50) !important;
+  color: #351020 !important;
+  transform: translateY(-2px) !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -370,19 +469,19 @@ nav .brand{display:flex;align-items:center;gap:12px;white-space:normal;min-width
   <div class="family-group">
     <h3 class="family-group-title">The Groom's Family</h3>
     <div class="members-grid">
-      <article class="member"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=85" alt="Groom's father photo placeholder"><div class="member-info"><h3>V. Soundarrajan</h3><p>Groom's Father</p></div></article>
-      <article class="member"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=85" alt="Groom's mother photo placeholder"><div class="member-info"><h3>D. Sripriya</h3><p>Groom's Mother</p></div></article>
+      <article class="member"><img src="Soundhar.jpeg" alt="Groom's father photo placeholder"><div class="member-info"><h3>V. Soundarrajan</h3><p>Groom's Father</p></div></article>
+      <article class="member"><img src="Priya.jpeg" alt="Groom's mother photo placeholder"><div class="member-info"><h3>D. Sripriya</h3><p>Groom's Mother</p></div></article>
     </div>
   </div>
     <div class="family-group">
     <h3 class="family-group-title">The Bride's Family</h3>
     <div class="members-grid">
-      <article class="member"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=85" alt="Bride's father photo placeholder"><div class="member-info"><h3>D.K.S. Shreesubbaiah</h3><p>Bride's Father</p></div></article>
-      <article class="member"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=85" alt="Bride's mother photo placeholder"><div class="member-info"><h3>S.V. Aalamelu</h3><p>Bride's Mother</p></div></article>
-      <article class="member"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=85" alt="Bride's sister photo placeholder"><div class="member-info"><h3>D.K.S. Sowmiyalaxmi</h3><p>Bride's Sister</p></div></article>
-      <article class="member"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=85" alt="Bride's sister's husband photo placeholder"><div class="member-info"><h3>G. Monish Kumar</h3><p>Bride's Brother-in-Law</p></div></article>
-      <article class="member"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=85" alt="First child photo placeholder"><div class="member-info"><h3>Sriesh Monishkumar</h3><p>Bride's Nephew</p></div></article>
-      <article class="member"><img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?auto=format&fit=crop&w=600&q=85" alt="Second child photo placeholder"><div class="member-info"><h3>Jitesh Monishkumar</h3><p>Bride's Nephew</p></div></article>
+      <article class="member"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=85" alt="Bride's Father"><div class="member-info"><h3>D.K.S. Shreesubbaiah</h3><p>Bride's Father</p></div></article>
+      <article class="member"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=85" alt="Bride's Mother"><div class="member-info"><h3>S.V. Aalamelu</h3><p>Bride's Mother</p></div></article>
+      <article class="member"><img src="Sowmi.jpeg" alt="Bride's Sister"><div class="member-info"><h3>D.K.S. Sowmiyalaxmi</h3><p>Bride's Sister</p></div></article>
+      <article class="member"><img src="Moni.jpeg" alt="Bride's Brother-in-Law"><div class="member-info"><h3>G. Monish Kumar</h3><p>Bride's Brother-in-Law</p></div></article>
+      <article class="member"><img src="Sriesh.jpeg" alt="First child photo placeholder"><div class="member-info"><h3>Sriesh Monishkumar</h3><p>Bride's Nephew</p></div></article>
+      <article class="member"><img src="Jitesh1.jpeg" alt="Second child photo placeholder"><div class="member-info"><h3>Jitesh Monishkumar</h3><p>Bride's Nephew</p></div></article>
     </div>
   </div>
 </section>
@@ -391,13 +490,13 @@ nav .brand{display:flex;align-items:center;gap:12px;white-space:normal;min-width
   <div class="section-head"><h2>Photo Gallery</h2><p>Little moments, big memories — enjoy the moving gallery</p></div>
   <div class="gallery-shell">
     <div class="gallery-track" id="galleryTrack" aria-label="Wedding photo carousel">
-      <figure class="gallery-slide"><img src="IMG-20260824-WA0047.jpg" alt="Wedding detail sample"><figcaption>Beautiful beginnings</figcaption></figure>
-      <figure class="gallery-slide"><img src="IMG-20260824-WA0030.jpg" alt="Wedding celebration sample"><figcaption>Sacred traditions</figcaption></figure>
-      <figure class="gallery-slide"><img src="IMG-20260704-WA0060~2.jpg" alt="Couple portrait sample"><figcaption>Two hearts, one journey</figcaption></figure>
-      <figure class="gallery-slide"><img src="IMG-20260623-WA0014~2.jpg" alt="Wedding ceremony sample"><figcaption>A day to remember</figcaption></figure>
-      <figure class="gallery-slide"><img src="IMG-20260704-WA0145.jpg" alt="Wedding reception details sample"><figcaption>Celebrating together</figcaption></figure>
+      <figure class="gallery-slide"><img src="IMG-20260824-WA0047.jpg" alt="Wedding detail sample"></figure>
+      <figure class="gallery-slide"><img src="IMG-20260824-WA0030.jpg" alt="Wedding celebration sample"></figure>
+      <figure class="gallery-slide"><img src="IMG-20260704-WA0060~2.jpg" alt="Couple portrait sample"></figure>
+      <figure class="gallery-slide"><img src="IMG-20260623-WA0014~2.jpg" alt="Wedding ceremony sample"></figure>
+      <figure class="gallery-slide"><img src="IMG-20260704-WA0145.jpg" alt="Wedding reception details sample"></figure>
 
-      <figure class="gallery-slide"><img src="IMG-20260623-WA0006.jpg" alt="Wedding flowers sample"><figcaption>Every detail with love</figcaption></figure>
+      <figure class="gallery-slide"><img src="IMG-20260623-WA0006.jpg" alt="Wedding flowers sample"></figure>
 
     </div>
   </div>
@@ -423,14 +522,14 @@ nav .brand{display:flex;align-items:center;gap:12px;white-space:normal;min-width
 <section class="wishes" id="live-wishes">
   <div class="section-head"><h2>Add Your Wishes</h2><p>Share your blessings with the couple</p></div>
   <div class="wishes-wrap">
-    <form id="wishesForm" class="wishes-form">
-      <label for="wishName">Your name</label><input id="wishName" name="name" required maxlength="80" placeholder="Enter your name">
-      <label for="wishRelation">Relation</label><input id="wishRelation" name="relation" maxlength="80" placeholder="Family, friend, colleague…">
-      <label for="wishMessage">Your blessing or wish</label><textarea id="wishMessage" name="message" required maxlength="500" rows="4" placeholder="Write a heartfelt message…"></textarea>
-      <button class="btn light" type="submit">Send Your Wishes ♥</button>
+    <form id="wishesForm" class="wishes-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdPnlJBrGbbi_IzHa2PoiZzky3Ar6zxRCK-QODhTAV3M-HLHw/formResponse" method="POST" target="wishSubmitFrame">
+      <label for="wishName">Your name</label><input id="wishName" name="entry.399528140" required maxlength="80" placeholder="Enter your name">
+      <label for="wishRelation">Relation</label><input id="wishRelation" name="entry.1109785362" maxlength="80" placeholder="Family, friend, colleague…">
+      <label for="wishMessage">Share your wishes and blessings for the couple</label><textarea id="wishMessage" name="entry.437414726" required maxlength="500" rows="4" placeholder="Write your heartfelt wishes here…"></textarea>
+      <button class="btn light" type="submit">Submit Wish ♥</button>
       <p id="wishNotice" role="status"></p>
     </form>
-    
+    <iframe name="wishSubmitFrame" title="Wish submission" style="display:none" aria-hidden="true"></iframe>
   </div>
 </section>
 
@@ -557,14 +656,15 @@ if(wishesForm){
       }
     });
   });
-  wishesForm.addEventListener('submit',event=>{
-    event.preventDefault();
-    const name=document.getElementById('wishName').value.trim();
-    const message=document.getElementById('wishMessage').value.trim();
+  wishesForm.addEventListener('submit',()=>{
     const notice=document.getElementById('wishNotice');
-    if(!name||!message){notice.textContent='Please enter your name and a wish.';return;}
-    notice.textContent='Thank you for sharing your wishes! Your message will not be displayed on this page.';
-    wishesForm.reset();
+    // The browser posts the text fields directly to the existing Google Form
+    // in a hidden iframe, keeping guests on this wedding website.
+    notice.textContent='Sending your wishes…';
+    setTimeout(()=>{
+      notice.textContent='Thank you for sharing your wishes and blessings! ♥';
+      wishesForm.reset();
+    },1200);
   });
 }
 
@@ -1016,7 +1116,7 @@ section { scroll-margin-top: 88px; }
   transition: transform .35s ease !important;
 }
 #gallery .gallery-slide:hover img { transform: scale(1.05) !important; }
-#gallery .gallery-slide figcaption { pointer-events: none; }
+#gallery .gallery-slide figcaption { display:none !important; }
 @media (max-width: 700px) {
   #gallery .gallery-slide {
     flex-basis: 245px !important;
